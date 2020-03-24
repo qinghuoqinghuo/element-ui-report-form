@@ -1,0 +1,20 @@
+{
+  "data": [
+    {
+      "label": "总α",
+      "value": "project1"
+    },
+    {
+      "label": "总β",
+      "value": "project2"
+    },
+    {
+      "label": "氚",
+      "value": "project3"
+    },
+    {
+      "label": "锶",
+      "value": "project4"
+    }
+  ]
+}
