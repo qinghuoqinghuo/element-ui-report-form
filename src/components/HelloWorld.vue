@@ -1,75 +1,77 @@
 <template>
-    <div class="hello">
-        <el-tabs v-model="activeName" @tab-click="handleClick" type="border-card">
-            <el-tab-pane label="统计图" name="first">
-                <Search-form @data="data" :activeName="activeName"></Search-form>
-                <el-card class="box-card" style="margin-top:15px;">
-                    <div class="chart-container">
-                        <lineChart v-if="selectCharts==1" :id="lineChartId" :dataObj="lineDataObj" height="100%"
-                                   width="100%"/>
-                        <barChart v-if="selectCharts==2" :id="barChartId" :dataObj="barDataObj" height="100%"
-                                  width="100%"/>
-                        <pieChart v-if="selectCharts==3" :id="pieChartId" :dataObj="pieDataObj" height="100%"
-                                  width="100%"/>
-                    </div>
-                </el-card>
-            </el-tab-pane>
-            <el-tab-pane label="统计列表" name="second">
-                <Search-form @data="data" :activeName="activeName"></Search-form>
-                <el-card class="box-card" style="margin-top:15px;">
-                    <div slot="header" class="clearfix" style="text-align: left;">
-                        <span>统计列表</span>
-                        <download-excel
-                                :fields="json_fields"
-                                :data="multipleSelection"
-                                :before-generate="startDownload"
-                                :before-finish="finishDownload"
-                                type="xls">
-                            <el-button type="primary" style="float:right;margin-top:-26px;">导出</el-button>
-                        </download-excel>
-                    </div>
-                    <el-table
-                            ref="multipleTable"
-                            :data="tableData"
-                            tooltip-effect="dark"
-                            style="width: 100%"
-                            @selection-change="handleSelectionChange">
-                        <el-table-column
-                                type="selection"
-                                width="55">
-                        </el-table-column>
-                        <el-table-column
-                                prop="updatetime"
-                                label="监测时间"
-                                show-overflow-tooltip>
-                            <!--<template slot-scope="scope">{{ scope.row.updatetime }}</template>-->
-                        </el-table-column>
-                        <el-table-column
-                                prop="stationname"
-                                show-overflow-tooltip
-                                label="监测站点">
-                            <!--<template slot-scope="scope">{{ scope.row.stationname }}</template>-->
-                        </el-table-column>
-                        <el-table-column v-for="(item,index) in changeProjectOptions" :key="index"
-                                         :prop="item.value"
-                                         :label="item.label"
-                                         show-overflow-tooltip>
-                        </el-table-column>
-                    </el-table>
-                    <el-pagination
-                            background
-                            @size-change="handleSizeChange"
-                            @current-change="handleCurrentChange"
-                            :current-page.sync="pageData.currentPage"
-                            :page-sizes="[100, 200, 300, 400]"
-                            :page-size="pageData.pageSize"
-                            layout="total,prev, pager, next"
-                            :total="pageData.total">
-                    </el-pagination>
-                </el-card>
-            </el-tab-pane>
-        </el-tabs>
-    </div>
+    <el-tabs v-model="activeName" @tab-click="handleClick" type="border-card">
+        <el-tab-pane label="统计图" name="first">
+            <Search-form @data="data" :activeName="activeName"></Search-form>
+            <el-card class="box-card" style="margin-top:15px;">
+
+                <div class="chart-container">
+
+                    <lineChart v-if="selectCharts==1" :id="lineChartId" :dataObj="lineDataObj" height="100%"
+                               width="100%"/>
+                    <barChart v-if="selectCharts==2" :id="barChartId" :dataObj="barDataObj" height="100%"
+                              width="100%"/>
+                    <pieChart v-if="selectCharts==3" :id="pieChartId" :dataObj="pieDataObj" height="100%"
+                              width="100%"/>
+
+                </div>
+
+            </el-card>
+        </el-tab-pane>
+        <el-tab-pane label="统计列表" name="second">
+            <Search-form @data="data" :activeName="activeName"></Search-form>
+            <el-card class="box-card" style="margin-top:15px;">
+                <div slot="header" class="clearfix" style="text-align: left;">
+                    <span>统计列表</span>
+                    <download-excel
+                            :fields="json_fields"
+                            :data="multipleSelection"
+                            :before-generate="startDownload"
+                            :before-finish="finishDownload"
+                            type="xls">
+                        <el-button type="primary" style="float:right;margin-top:-26px;">导出</el-button>
+                    </download-excel>
+                </div>
+                <el-table
+                        ref="multipleTable"
+                        :data="tableData"
+                        tooltip-effect="dark"
+                        style="width: 100%"
+                        @selection-change="handleSelectionChange">
+                    <el-table-column
+                            type="selection"
+                            width="55">
+                    </el-table-column>
+                    <el-table-column
+                            prop="updatetime"
+                            label="监测时间"
+                            show-overflow-tooltip>
+                        <!--<template slot-scope="scope">{{ scope.row.updatetime }}</template>-->
+                    </el-table-column>
+                    <el-table-column
+                            prop="stationname"
+                            show-overflow-tooltip
+                            label="监测站点">
+                        <!--<template slot-scope="scope">{{ scope.row.stationname }}</template>-->
+                    </el-table-column>
+                    <el-table-column v-for="(item,index) in changeProjectOptions" :key="index"
+                                     :prop="item.value"
+                                     :label="item.label"
+                                     show-overflow-tooltip>
+                    </el-table-column>
+                </el-table>
+                <el-pagination
+                        background
+                        @size-change="handleSizeChange"
+                        @current-change="handleCurrentChange"
+                        :current-page.sync="pageData.currentPage"
+                        :page-sizes="[100, 200, 300, 400]"
+                        :page-size="pageData.pageSize"
+                        layout="total,prev, pager, next"
+                        :total="pageData.total">
+                </el-pagination>
+            </el-card>
+        </el-tab-pane>
+    </el-tabs>
 </template>
 
 <script>
@@ -240,10 +242,12 @@
             },
             handleSizeChange() {
             },
+            /**
+             * 切换分页
+             * */
             handleCurrentChange(val) {
                 let self = this;
                 self.pageData.currentPage = val;
-
                 self.getTableData(this.formOptions);
             },
             /**
@@ -307,6 +311,6 @@
     .chart-container {
         position: relative;
         width: 100%;
-        height: calc(100vh - 200px);
+        height: calc(100vh - 330px);
     }
 </style>

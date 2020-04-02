@@ -1,48 +1,42 @@
 <template>
     <div id="app">
-        <el-row>
-            <el-col :span="4">
-                <NavMenu></NavMenu>
-            </el-col>
-            <el-col :span="20">
-                <router-view/>
-            </el-col>
-        </el-row>
-
+        <NavMenu class="navMenuBox"></NavMenu>
+        <router-view class="routerView"/>
     </div>
 </template>
 <script>
     import NavMenu from '@/components/navMenu'
-    export  default {
-        data(){
-            return {
 
+    export default {
+        data() {
+            return {
             }
         },
-        components:{
+        mounted(){
+
+        },
+        components: {
             NavMenu
         }
     }
 </script>
-<style>
+<style lang="scss">
+    body {
+        margin:0;
+    }
     #app {
-        font-family: Avenir, Helvetica, Arial, sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        text-align: center;
-        color: #2c3e50;
+
+        .navMenuBox {
+            position: fixed;
+            width: 200px;
+            height:100%;
+            background: #545C64;
+        }
+
+        .routerView {
+            margin-left: 200px
+        }
+
     }
 
-    #nav {
-        padding: 30px;
-    }
-
-    #nav a {
-        font-weight: bold;
-        color: #2c3e50;
-    }
-
-    #nav a.router-link-exact-active {
-        color: #42b983;
-    }
 </style>
