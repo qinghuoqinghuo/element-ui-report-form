@@ -1,9 +1,29 @@
 <template>
     <div id="app">
-        <router-view/>
+        <el-row>
+            <el-col :span="4">
+                <NavMenu></NavMenu>
+            </el-col>
+            <el-col :span="20">
+                <router-view/>
+            </el-col>
+        </el-row>
+
     </div>
 </template>
+<script>
+    import NavMenu from '@/components/navMenu'
+    export  default {
+        data(){
+            return {
 
+            }
+        },
+        components:{
+            NavMenu
+        }
+    }
+</script>
 <style>
     #app {
         font-family: Avenir, Helvetica, Arial, sans-serif;
