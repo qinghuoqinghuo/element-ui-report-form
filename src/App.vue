@@ -4,7 +4,7 @@
         <router-view class="routerView"/>
     </div>
 </template>
-<script>
+<script type="text/javascript">
     import NavMenu from '@/components/navMenu'
 
     export default {

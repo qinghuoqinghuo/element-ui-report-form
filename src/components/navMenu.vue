@@ -4,8 +4,6 @@
             <el-menu
                     default-active="reportCount"
                     class="el-menu-vertical-demo"
-                    @open="handleOpen"
-                    @close="handleClose"
                     @select="handleSelect"
                     background-color="#545C64"
                     text-color="#fff"
@@ -107,16 +105,14 @@
             }
         },
         methods: {
-            handleOpen(key, keyPath) {
-                console.log(key, keyPath);
-            },
-            handleClose(key, keyPath) {
-                console.log(key, keyPath);
-            },
-            handleSelect(key, keyPath) {
-                debugger
+//            handleOpen(key, keyPath) {
+//                console.log(key, keyPath);
+//            },
+//            handleClose(key, keyPath) {
+//                console.log(key, keyPath);
+//            },
+            handleSelect(key) {
                 this.$router.push({name: key});
-                console.log(key, keyPath)
             }
         }
     }
