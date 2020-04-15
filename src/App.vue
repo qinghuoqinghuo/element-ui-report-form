@@ -1,7 +1,9 @@
 <template>
     <div id="app">
         <NavMenu class="navMenuBox"></NavMenu>
-        <router-view class="routerView"/>
+        <transition name="fade">
+            <router-view class="routerView"/>
+        </transition>
     </div>
 </template>
 <script type="text/javascript">
@@ -23,6 +25,12 @@
 <style lang="scss">
     body {
         margin:0;
+    }
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity .5s;
+    }
+    .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+        opacity: 0;
     }
     #app {
 
